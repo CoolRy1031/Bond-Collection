@@ -18,6 +18,7 @@
 <section class="card-container">
   {% for bond in bonds %}
     <div class="card">
+      <a href="{% url 'bonds_detail' bond.id %}">
       <div class="card-content">
         <div class="card-img-container">
           <img 
@@ -29,6 +30,7 @@
           <p>This movie came out in {{ bond.year }}</p>
         <p><small>{{ bond.description }}</small></p>
       </div>
+      </a>
     </div>
   {% endfor %}
 </section>

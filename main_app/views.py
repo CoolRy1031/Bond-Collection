@@ -12,3 +12,7 @@ def about(request):
 def bonds_index(request):
   bonds = Bond.objects.all()
   return render(request, 'bonds/index.html', { 'bonds' : bonds})
+
+def bonds_detail(request, bond_id):
+  bond = Bond.objects.get(id=bond_id)
+  return render(request, 'bonds/detail.html', {'bond': bond})
