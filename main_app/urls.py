@@ -9,5 +9,6 @@ urlpatterns = [
   path('bonds/create/', views.BondCreate.as_view(), name='bonds_create'),
   path('bonds/<int:pk>/update/', views.BondUpdate.as_view(), name='bonds_update'),
   path('bonds/<int:pk>/delete/', views.BondDelete.as_view(), name='bonds_delete'),
+  path('bonds/<int:bond_id>/add_rating/', views.add_rating, name="add_rating"),
 
 ]

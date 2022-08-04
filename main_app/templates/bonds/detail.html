@@ -28,5 +28,54 @@
     </div>
   </div>
 </section>
+<div class="feedings-toy-container">
+  <section class="feedings">
+    <div class="subsection-title">
+      <h2>Rating</h2>
+      <img 
+        src="" 
+        alt="An ice cream cone bond"
+      />
+      <img 
+        src=""
+        alt="A bond as onigiri"
+      />
+      <img 
+        src="" 
+        alt="A kabob of ladies"
+      />
+    </div>
+    <h3>Add a Rating</h3>
+    <form
+      action="{% url 'add_rating' bond.id %}"
+      method="post" 
+      class="subsection-content"
+    >
+      {% csrf_token %}
+      {{ rating_form.as_p }}
+      <button type="submit" class="btn submit">Add Review</button>
+    </form>
+    <h3>My Rating</h3>
+    {% if bond.rating_set.all.count%}
+    <table>
+      <thead>
+        <tr><th>Review</th></tr>
+      </thead>
+      <tbody>
+        {% for rating in bond.rating_set.all %}
+          <tr>
+            <td>{{rating.get_type_display}}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+    <div class="subsection-content">
+      <p>{{bond.movie}} has not been watched 😔 or the user is too lazy to click the button</p>
+    </div>
+  {% endif %}
+  </section>
+</div>
+
 
 {% endblock %}

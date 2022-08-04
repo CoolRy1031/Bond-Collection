@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Bond
+from .forms import RatingForm
 
 
 
@@ -17,7 +18,16 @@ def bonds_index(request):
 
 def bonds_detail(request, bond_id):
   bond = Bond.objects.get(id=bond_id)
-  return render(request, 'bonds/detail.html', {'bond': bond})
+  rating_form = RatingForm()
+  return render(request, 'bonds/detail.html', {'bond': bond, 'rating_form': rating_form})
+
+def add_rating(request, bond_id):
+  form = RatingForm(request.POST)
+  if form.is_valid():
+    new_rating = form.save(commit=False)
+    new_rating.bond_id = bond_id
+    new_rating.save()
+  return redirect('bonds_detail', bond_id=bond_id)
 
 class BondCreate(CreateView):
   model = Bond
