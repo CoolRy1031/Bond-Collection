@@ -22,6 +22,10 @@
     <h1>{{ bond.movie }}</h1>
       <h2>This movie came out in {{ bond.year }}</h2>
     <p>{{ bond.description }}</p>
+    <div class="cat-actions">
+      <a href="{% url 'bonds_update' bond.id %}" class="btn warn">Edit</a>
+      <a href="{% url 'bonds_delete' bond.id %}" class="btn danger">Delete</a>
+    </div>
   </div>
 </section>
 

@@ -28,8 +28,9 @@
     </div>
     <nav>
       <ul>
-        <li><a href="/about">About</a></li>
-        <li><a href="/bonds">Bond Collection</a></li>
+        <li><a href="{% url 'about'%}">About</a></li>
+        <li><a href="{% url 'bonds_create' %}">Add a Movie</a></li>
+        <li><a href="{% url 'bonds_index' %}">Bond Collection</a></li>
       </ul>
     </nav>
   </header>
