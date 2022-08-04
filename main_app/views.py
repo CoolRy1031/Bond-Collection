@@ -1,6 +1,7 @@
 from django.shortcuts import redirect, render
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import Bond
+from django.views.generic import ListView, DetailView
+from .models import Bond, Gadjet
 from .forms import RatingForm
 
 
@@ -41,3 +42,20 @@ class BondUpdate(UpdateView):
 class BondDelete(DeleteView):
   model = Bond
   success_url = '/bonds/'
+
+class GadjetCreate(CreateView):
+  model = Gadjet
+  fields = '__all__'
+
+class GadjetList(ListView):
+  model = Gadjet
+
+class GadjetDetail(DetailView):
+  model = Gadjet
+
+class GadjetUpdate(UpdateView):
+  model = Gadjet
+
+class GadjetDelete(DeleteView):
+  model = Gadjet
+  success_url = '/gadjets/'

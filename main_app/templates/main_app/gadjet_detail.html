@@ -1,0 +1,20 @@
+{% extends 'base.html' %} 
+{% load static %} 
+
+{% block head %}
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'css/gadjets/gadjet-detail.css' %}"
+/>
+{% endblock %}
+
+{% block content %} 
+  <div class="card-content">
+    <h2>{{ gadjet.name }}</h2>
+  </div>
+</div>
+<a href="{% url 'gadjets_update' gadjet.id %}" class="btn warn">Edit</a>
+<a href="{% url 'gadjets_delete' gadjet.id %}" class="btn danger">Delete</a>
+
+{% endblock %}
