@@ -15,6 +15,7 @@ urlpatterns = [
   path('gadjets/', views.GadjetList.as_view(), name='gadjets_index'),
   path('gadjets/<int:pk>/update/', views.GadjetUpdate.as_view(), name='gadjets_update'),
   path('gadjets/<int:pk>/delete/', views.GadjetDelete.as_view(), name='gadjets_delete'),
-  path('bonds/<int:bond_id>/assoc_gadjet/<int:gadjet_id>/', views.assoc_gadjet, name='assoc_gadjet')
+  path('bonds/<int:bond_id>/assoc_gadjet/<int:gadjet_id>/', views.assoc_gadjet, name='assoc_gadjet'),
+  path('accounts/signup/', views.signup, name='signup')
 
 ]
