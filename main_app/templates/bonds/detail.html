@@ -75,6 +75,30 @@
     </div>
   {% endif %}
   </section>
+  <section class="toys">
+    <div class="subsection-title">
+      <h2>Gadjets</h2>
+      <img src="" alt="A ball of string" />
+    </div>
+    <h3>{{ bond.movie }}'s Gadjets</h3>
+    <div class="subsection-content">
+      {% if bond.gadjets.count %}
+        {% for gadjet in bond.gadjets.all %}
+          <div class="toy-container">
+            <a href="{% url 'gadjets_detail' gadjet.id %}">
+              <p>A  {{ gadjet.name }}</p>
+            </a>
+          </div>
+        {% endfor %}
+      {% else %}
+        <p class="no-toys">{{bond.movie}} doesn't have any Gadjets 😞</p>
+      {% endif %}
+    </div>
+    <h3>Available Gadjets</h3>
+    <div class="subsection-content">
+      {% comment %} We'll display available toys here {% endcomment %}
+    </div>
+  </section>
 </div>
 
 

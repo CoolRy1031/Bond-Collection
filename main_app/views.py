@@ -55,6 +55,7 @@ class GadjetDetail(DetailView):
 
 class GadjetUpdate(UpdateView):
   model = Gadjet
+  fields = '__all__'
 
 class GadjetDelete(DeleteView):
   model = Gadjet

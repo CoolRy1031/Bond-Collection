@@ -22,6 +22,7 @@ class Bond(models.Model):
   movie = models.CharField(max_length=100)
   description = models.TextField(max_length=250)
   year = models.IntegerField()
+  gadjets = models.ManyToManyField(Gadjet)
 
   def __str__(self):
     return self.movie
