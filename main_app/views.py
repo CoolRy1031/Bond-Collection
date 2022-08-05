@@ -19,8 +19,9 @@ def bonds_index(request):
 
 def bonds_detail(request, bond_id):
   bond = Bond.objects.get(id=bond_id)
+  gadjets_bond_doesnt_have = Bond.objects.exclude(id__in = bond.gadjets.all().values_list('id'))
   rating_form = RatingForm()
-  return render(request, 'bonds/detail.html', {'bond': bond, 'rating_form': rating_form})
+  return render(request, 'bonds/detail.html', {'bond': bond, 'rating_form': rating_form, 'gadjets': gadjets_bond_doesnt_have})
 
 def add_rating(request, bond_id):
   form = RatingForm(request.POST)
@@ -32,7 +33,7 @@ def add_rating(request, bond_id):
 
 class BondCreate(CreateView):
   model = Bond
-  fields = '__all__'
+  fields = ['movie', 'description', 'year']
   success_url = '/bonds/'
 
 class BondUpdate(UpdateView):
@@ -52,6 +53,7 @@ class GadjetList(ListView):
 
 class GadjetDetail(DetailView):
   model = Gadjet
+  fields='__all__'
 
 class GadjetUpdate(UpdateView):
   model = Gadjet
@@ -60,3 +62,7 @@ class GadjetUpdate(UpdateView):
 class GadjetDelete(DeleteView):
   model = Gadjet
   success_url = '/gadjets/'
+
+def assoc_gadjet(request, bond_id, gadjet_id):
+  Bond.objects.get(id=bond_id).gadjets.add(gadjet_id)
+  return redirect('bonds_detai', bond_id=bond_id)
