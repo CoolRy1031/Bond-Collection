@@ -101,9 +101,9 @@
         {% for gadjet in gadjets.all %}
           <div class="toy-container">
             <a href="{% url 'gadjets_detail' gadjet.id %}">
-              <p>A  {{ gadjet.name }}</p>
+              <p>An {{ gadjet.name }}</p>
             </a>
-            <form action="" method="post">
+            <form action="{% url 'assoc_gadjet' bond.id gadjet.id %}" method="post">
               {% csrf_token %}
               <button type="submit" class="btn submit">Equip Gadjet</button>
             </form>
@@ -111,7 +111,7 @@
         {% endfor %}
       {% else %}
         <p class="all-toys">
-          {{cat.name}} already has all the available Gadjets 🥳
+          {{bond.movie}} already has all the available Gadjets 🥳
         </p>
       {% endif %}
     </div>

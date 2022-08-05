@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from django.contrib.auth.models import User
 
 RATINGS = (
   ('B', 'Bad'),
@@ -23,6 +24,7 @@ class Bond(models.Model):
   description = models.TextField(max_length=250)
   year = models.IntegerField()
   gadjets = models.ManyToManyField(Gadjet)
+  user = models.ForeignKey(User, on_delete=models.CASCADE)
 
   def __str__(self):
     return self.movie

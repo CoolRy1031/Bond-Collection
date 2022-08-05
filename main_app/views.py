@@ -3,12 +3,13 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
 from .models import Bond, Gadjet
 from .forms import RatingForm
+from django.contrib.auth.views import LoginView
 
 
 
 # Create your views here.
-def home(request):
-  return render(request, 'home.html')
+class Home(LoginView):
+  template_name = 'home.html'
 
 def about(request):
   return render(request, 'about.html')
@@ -65,4 +66,4 @@ class GadjetDelete(DeleteView):
 
 def assoc_gadjet(request, bond_id, gadjet_id):
   Bond.objects.get(id=bond_id).gadjets.add(gadjet_id)
-  return redirect('bonds_detai', bond_id=bond_id)
+  return redirect('bonds_detail', bond_id=bond_id)
