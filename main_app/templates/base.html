@@ -31,9 +31,9 @@
         {% if user.is_authenticated %}
         <li><a href="{% url 'about'%}">About</a></li>
         <li><a href="{% url 'bonds_create' %}">Add a Movie</a></li>
-        <li><a href="{% url 'gadjets_create' %}">Add a Gadjet</a></li>
+        <li><a href="{% url 'gadjets_create' %}">Add a Gadget</a></li>
         <li><a href="{% url 'bonds_index' %}">Bond Collection</a></li>
-        <li><a href="{% url 'gadjets_index' %}">All Gadjets</a></li>
+        <li><a href="{% url 'gadjets_index' %}">All Gadgets</a></li>
         <li><a href="{% url 'logout' %}">Log out</a></li>
         {% else %}
         <li><a href="{% url 'about' %}">About</a></li>
