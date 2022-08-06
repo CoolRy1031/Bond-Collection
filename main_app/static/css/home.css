@@ -21,10 +21,13 @@ main > section {
 
 .logo-container {
   max-width: 375px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .cat-container {
-  width: 80%;
+  width: 10%;
 }
 
 .login {
